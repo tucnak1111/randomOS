@@ -16,7 +16,14 @@ function progressBar(seconds)
     end
     print(" 100%")
 end
+io.write("guest@randomOS:~$ ")
+io.flush()
+local command = io.read()
+if command ~= "randomos run /os/utils/install.u.sh" then
+    print("unknown command")
+    return
 
+else
 print("Preparing for booting...")
 progressBar(5)
 print("> mounterx build /os/bin/ > /os/lib/")
@@ -58,4 +65,8 @@ if command == "help" then
     print("- exit: Exit the terminal")
     print("- clear: Clear the terminal")
     print("- date: Show the current date and time")
+elseif command == "exit" then
+    print("Exiting terminal...")
+    os.exit()
+end
 end
